@@ -23,10 +23,6 @@ public class CompanyController {
     @GetMapping("")
     @ResponseBody
     public Company getSingleCompany(@RequestParam String pk) {
-        Company company = companies.getCompany(pk);
-        if(company == null)
-            throw new NotFoundException();
-
-        return company;
+        return companies.getCompany(pk);
     }
 }
