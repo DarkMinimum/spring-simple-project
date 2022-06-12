@@ -3,6 +3,7 @@ package ua.darkminimum.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.darkminimum.entities.Company;
+import ua.darkminimum.exceptions.NotFoundException;
 import ua.darkminimum.services.CompanyService;
 
 import java.util.List;
@@ -22,6 +23,10 @@ public class CompanyController {
     @GetMapping("")
     @ResponseBody
     public Company getSingleCompany(@RequestParam String pk) {
-        return companies.getCompany(pk);
+        Company company = companies.getCompany(pk);
+        if(company == null)
+            throw new NotFoundException();
+
+        return company;
     }
 }
