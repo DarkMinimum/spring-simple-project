@@ -1,18 +1,18 @@
 package ua.darkminimum.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
  * States to Company entity
  */
 @Entity(name="COMPANY")
-public class Company {
+public class Company implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CO")
+    @SequenceGenerator(name="SEQ_CO", sequenceName="SEQ_CO", allocationSize = 1)
     private Long pk;
     private String name;
     private String contactPhone;

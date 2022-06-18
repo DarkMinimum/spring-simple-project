@@ -6,4 +6,5 @@ import ua.darkminimum.entities.Company;
 
 @Repository
 public interface CompanyRepo extends JpaRepository<Company, Long> {
+    public Company findCompanyByName(final String name);
 }

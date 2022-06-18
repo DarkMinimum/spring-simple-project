@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en" th:include="header"/>
+
+<body>
+<h1>Found company</h1>
+
+<!--TODO: norm styles-->
+<div>
+    <h2 th:text="${company.name}"/>
+    <div>
+        <p th:text="${company.email}"/>
+        <p th:text="${company.contactPhone}"/>
+    </div>
+</div>
+
+
+</body>
+</html>
