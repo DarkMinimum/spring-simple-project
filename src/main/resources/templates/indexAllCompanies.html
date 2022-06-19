@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en"/>
+<head lang="en" th:include="header"></head>
+
+<body>
+<h1>All registered companies</h1>
+
+<!--TODO: norm styles-->
+<div th:each="cp: ${companies}">
+    <ul>
+        <li>
+            <a th:href="@{'/company/get?pk=' + ${cp.pk}}"><h2 th:text="${cp.name}"/></a>
+            <div>
+                <p th:text="${cp.email}"/>
+                <p th:text="${cp.contactPhone}"/>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>

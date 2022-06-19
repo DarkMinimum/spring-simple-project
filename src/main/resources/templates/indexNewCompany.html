@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en" th:include="header"/>
+
+<body>
+<h1>Register brand new company</h1>
+
+<!--TODO: norm styles-->
+<form method="post" action="#" th:action="@{/company/sent}" th:object="${company}">
+    <p>Name: <input type="text" th:field="*{name}"/></p>
+    <p>Email: <input type="email" th:field="*{email}"/></p>
+    <p>Contact phone: <input type="text" th:field="*{contactPhone}"/></p>
+    <p>
+        <input type="submit" value="upload"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+
+
+</body>
+</html>
