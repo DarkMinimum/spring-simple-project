@@ -8,20 +8,22 @@
 <!--TODO: norm styles-->
 <div>
     <form method="post" th:action="@{/company/edit}" th:object="${company}">
-        <p>Name: <input type="text" th:field="*{pk}" th:value="${pk}" th:readonly="true"/></p>
-        <p>Name: <input type="text" th:field="*{name}" th:value="${name}"/></p>
-        <p>Email: <input type="email" th:field="*{email}" th:value="${email}"/></p>
-        <p>Contact phone: <input type="text" th:field="*{contactPhone}" th:value="${contactPhone}"/></p>
+        <input type="hidden" th:field="*{pk}" th:value="${pk}" th:readonly="true"/>
+        <label class="col-form-label mt-4" for="inputDefault">Name:</label>
+        <input type="text" class="form-control" placeholder="Your name..." id="inputDefault" th:field="*{name}" th:value="${name}"/>
+        <label class="col-form-label mt-4" for="inputDefault">Email:</label>
+        <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" type="email"
+               th:field="*{email}" th:value="${email}"/>
+        <label class="col-form-label mt-4" for="inputDefault">Contact phone:</label>
+        <input type="text" class="form-control" placeholder="Your phone..." id="contactPhone" th:field="*{contactPhone}" th:value="${contactPhone}"/>
         <p>
             <input type="submit" value="edit"/>
         </p>
     </form>
-
+    <br><br>
     <form method="delete" th:action="@{/company/remove}" th:object="${company}">
-        <p>Name: <input type="text" th:field="*{pk}" th:value="${pk}" th:readonly="true"/></p>
-        <p>Place for deleting company</p>
-        <p>
-            <input type="submit" value="remove"/>
+        <input class="btn btn-danger" type="hidden" th:field="*{pk}" th:value="${pk}" th:readonly="true"/>
+        <p>Place for deleting company: <input type="submit" value="remove"/>
         </p>
     </form>
 </div>
