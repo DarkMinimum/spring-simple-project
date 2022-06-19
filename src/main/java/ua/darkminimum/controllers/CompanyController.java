@@ -1,8 +1,6 @@
 package ua.darkminimum.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,11 +42,22 @@ public class CompanyController {
     }
 
     @RequestMapping("/sent")
-    public ModelAndView saveEmployee(@ModelAttribute Company company, Model model) {
-        Long pk = companies.add(company);
-
+    public ModelAndView addCompany(@ModelAttribute Company company, Model model) {
+        Long pk = companies.save(company);
         return (pk > -1L) ? this.getSingleCompany(String.valueOf(pk), model) : this.showError(model);
+    }
 
+    ////todo: get object and than modify it against creating company and replacing values from one to another
+    @RequestMapping("/edit")
+    public ModelAndView editCompany(@ModelAttribute Company company, Model model) {
+        Long pk = companies.edit(company);
+        return (pk > -1L) ? this.getSingleCompany(String.valueOf(pk), model) : this.showError(model);
+    }
+
+    @RequestMapping("/remove")
+    public ModelAndView removeCompany(@ModelAttribute Company company, Model model) {
+        Long pk = companies.remove(company);
+        return (pk > -1L) ? this.getAllCompanies(model) : this.showError(model);
     }
 
     ///TODO: Message for an error page
@@ -59,6 +68,5 @@ public class CompanyController {
         modelAndView.setViewName("indexErr.html");
         return modelAndView;
     }
-
 
 }

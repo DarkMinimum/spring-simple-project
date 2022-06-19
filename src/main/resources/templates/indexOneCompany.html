@@ -7,13 +7,24 @@
 
 <!--TODO: norm styles-->
 <div>
-    <h2 th:text="${company.name}"/>
-    <div>
-        <p th:text="${company.email}"/>
-        <p th:text="${company.contactPhone}"/>
-    </div>
-</div>
+    <form method="post" th:action="@{/company/edit}" th:object="${company}">
+        <p>Name: <input type="text" th:field="*{pk}" th:value="${pk}" th:readonly="true"/></p>
+        <p>Name: <input type="text" th:field="*{name}" th:value="${name}"/></p>
+        <p>Email: <input type="email" th:field="*{email}" th:value="${email}"/></p>
+        <p>Contact phone: <input type="text" th:field="*{contactPhone}" th:value="${contactPhone}"/></p>
+        <p>
+            <input type="submit" value="edit"/>
+        </p>
+    </form>
 
+    <form method="delete" th:action="@{/company/remove}" th:object="${company}">
+        <p>Name: <input type="text" th:field="*{pk}" th:value="${pk}" th:readonly="true"/></p>
+        <p>Place for deleting company</p>
+        <p>
+            <input type="submit" value="remove"/>
+        </p>
+    </form>
+</div>
 
 </body>
 </html>
